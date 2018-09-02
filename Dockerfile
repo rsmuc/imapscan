@@ -45,18 +45,31 @@ RUN pip install sphinx_rtd_theme html recommonmark typing isbg
 RUN wget https://github.com/rsmuc/isbg/archive/master.zip && \
     unzip master.zip &&\
     cd isbg-master &&\
-    python setup.py install
+    python setup.py install &&\
+    cd ..&\
+    rm -Rf isbg-master && \
+    rm master.zip
+    
+RUN wget https://github.com/rsmuc/imapscan/archive/master.zip && \
+    unzip master.zip &&\
+    cd imapscan-master/files &&\
+    cp * /root &&\
+    cd && \
+    rm -Rf imapscan-master && \
+    rm master.zip
+    
 
 #ADD files/* /root/
 
 # prepare directories and files
 RUN mkdir /root/accounts ; \
-    mkdir /root/.imapfilter ; \
+    #mv *.txt /root/accounts ;\
+    #mkdir /root/.imapfilter ; \
     mkdir -p /var/spamassassin/bayesdb ; \
     chown -R debian-spamd:mail /var/spamassassin ; \
-#    chmod u+x startup ; \
-#    chmod u+x *.sh ; \
- #   crontab cron_scans && rm cron_scans ; \
+    chmod u+x startup ; \
+    chmod u+x *.sh ; \
+#    crontab cron_scans && rm cron_scans ; \
     sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/spamassassin ; \
     sed -i 's/CRON=0/CRON=1/' /etc/default/spamassassin ; \
     sed -i 's/^OPTIONS=".*"/OPTIONS="--allow-tell --max-children 5 --helper-home-dir -u debian-spamd -x --virtual-config-dir=\/var\/spamassassin -s mail"/' /etc/default/spamassassin ; \

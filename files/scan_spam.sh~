@@ -30,8 +30,7 @@ if [ -f "${file}" ]; then
     until /usr/local/bin/isbg --noninteractive --flag --spamc \
         --imaphost ${account[0]} --imapuser "${account[1]}"  --imappasswd "${account[2]}" \
         --spaminbox "${account[3]}" \
-        --imapinbox "${account[4]}" \
-        --dryrun
+        --imapinbox "${account[4]}"
     do
         (>&2 echo "isbg failed, retrying...")
     done

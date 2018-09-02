@@ -1,5 +1,12 @@
 # testing only
 
+## todos:
+
+* integrate heinlein scripts
+* integrate bayes filter
+* show always header
+* mark with ***SPAM***
+
 
 Docker container that uses [isbg](https://github.com/dc55028/isbg) and [imapfilter](https://github.com/lefcha/imapfilter) to filter out spam from a remote IMAP server.
 
