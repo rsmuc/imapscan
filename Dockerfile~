@@ -40,7 +40,7 @@ WORKDIR /root
 #   rm -Rf isbg-master && \
 #    rm isbg.zip
 
-RUN pip install sphinx_rtd_theme html recommonmark typing isbg
+RUN pip install sphinx_rtd_theme html recommonmark isbg
 
 RUN wget https://github.com/rsmuc/isbg/archive/master.zip && \
     unzip master.zip &&\
