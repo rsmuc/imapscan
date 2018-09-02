@@ -30,34 +30,25 @@ RUN apt-get update && \
 
 WORKDIR /root
 
-# install isbg
-#RUN wget https://github.com/rsmuc/isbg/archive/master.zip && \
-#    mv master.zip isbg.zip && \
-#    unzip isbg.zip && \
-#    cd isbg-master && \
-#    python setup.py install && \
-#    cd .. && \
-#   rm -Rf isbg-master && \
-#    rm isbg.zip
-
 RUN pip install sphinx_rtd_theme html recommonmark typing isbg
 
-RUN wget https://github.com/rsmuc/isbg/archive/master.zip && \
-    unzip master.zip &&\
-    cd isbg-master &&\
-    python setup.py install &&\
-    cd ..&\
+RUN cd /root && \
+    wget https://github.com/rsmuc/isbg/archive/master.zip && \
+    unzip master.zip && \
+    cd isbg-master && \
+    python setup.py install && \
+    cd .. && \
     rm -Rf isbg-master && \
     rm master.zip
     
-RUN wget https://github.com/rsmuc/imapscan/archive/master.zip && \
-    unzip master.zip &&\
-    cd imapscan-master/files &&\
-    cp * /root &&\
+RUN cd /root && \ 
+    wget https://github.com/rsmuc/imapscan/archive/master.zip && \
+    unzip master.zip && \
+    cd imapscan-master/files && \
+    cp * /root && \
     cd && \
-    rm -Rf imapscan-master && \
-    rm master.zip
-    
+    rm -Rf /root/imapscan-master && \
+    rm /root/master.zip
 
 #ADD files/* /root/
 
@@ -65,6 +56,7 @@ RUN wget https://github.com/rsmuc/imapscan/archive/master.zip && \
 RUN mkdir /root/accounts ; \
     #mv *.txt /root/accounts ;\
     #mkdir /root/.imapfilter ; \
+    cd /root && \ 
     mkdir -p /var/spamassassin/bayesdb ; \
     chown -R debian-spamd:mail /var/spamassassin ; \
     chmod u+x startup ; \
