@@ -63,7 +63,7 @@ RUN wget https://github.com/rsmuc/imapscan/archive/master.zip && \
 
 # prepare directories and files
 RUN mkdir /root/accounts ; \
-    mv *.txt /root/accounts ;\
+    #mv *.txt /root/accounts ;\
     #mkdir /root/.imapfilter ; \
     mkdir -p /var/spamassassin/bayesdb ; \
     chown -R debian-spamd:mail /var/spamassassin ; \

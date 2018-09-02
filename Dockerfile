@@ -88,4 +88,4 @@ VOLUME /var/spamassassin
 VOLUME /root/.imapfilter
 VOLUME /root/accounts
 
-CMD sleep 9999999 && tail -n 0 -F /var/log/*.log
+CMD /root/startup && tail -n 0 -F /var/log/*.log
