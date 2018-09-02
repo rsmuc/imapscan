@@ -30,7 +30,7 @@ RUN apt-get update && \
 
 WORKDIR /root
 
-RUN pip install sphinx_rtd_theme html recommonmark typing isbg
+RUN pip install sphinx_rtd_theme html recommonmark typing
 
 RUN cd /root && \
     wget https://github.com/rsmuc/isbg/archive/master.zip && \
@@ -61,7 +61,7 @@ RUN mkdir /root/accounts ; \
     chown -R debian-spamd:mail /var/spamassassin ; \
     chmod u+x startup ; \
     chmod u+x *.sh ; \
-#    crontab cron_scans && rm cron_scans ; \
+    crontab /root/cron_scans && rm /root/cron_scans ; \
     sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/spamassassin ; \
     sed -i 's/CRON=0/CRON=1/' /etc/default/spamassassin ; \
     sed -i 's/^OPTIONS=".*"/OPTIONS="--allow-tell --max-children 5 --helper-home-dir -u debian-spamd -x --virtual-config-dir=\/var\/spamassassin -s mail"/' /etc/default/spamassassin ; \
