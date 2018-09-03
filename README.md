@@ -7,6 +7,17 @@
 * show always header (added to user_prefs)
 * mark with ***SPAM*** (added to user prefs)
 * make learnhambox configurable
+* check if spamassassin is stable (issues on debian native)
+
+
+
+## run dockercontainer:
+* sudo docker volume create spamassassin
+* sudo docker volume create accounts
+* sudo docker run -d --name isbg-test -v spamassassin:/var/spamassassin -v accounts:/root/accounts . -t isbg-test isbg-test 
+
+- if available copy the bayes_database to /var/spamassassin
+- configure the accounts at /root/accounts
 
 
 Docker container that uses [isbg](https://github.com/dc55028/isbg) and [imapfilter](https://github.com/lefcha/imapfilter) to filter out spam from a remote IMAP server.

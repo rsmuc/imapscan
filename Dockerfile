@@ -77,7 +77,8 @@ RUN mkdir /root/accounts ; \
 
 # volumes
 VOLUME /var/spamassassin
-VOLUME /root/.imapfilter
+VOLUME /root/.spamassassin
 VOLUME /root/accounts
+
 
 CMD /root/startup && tail -n 0 -F /var/log/*.log
