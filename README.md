@@ -10,11 +10,11 @@
 * check if spamassassin is stable (issues on debian native)
 
 
-
 ## run dockercontainer:
 * sudo docker volume create spamassassin
 * sudo docker volume create accounts
-* sudo docker run -d --name isbg-test -v spamassassin:/var/spamassassin -v accounts:/root/accounts . -t isbg-test isbg-test 
+* sudo docker volume create user_prefs
+* sudo docker run -d --name isbg-test -v spamassassin:/var/spamassassin -v accounts:/root/accounts isbg-test
 
 - if available copy the bayes_database to /var/spamassassin
 - configure the accounts at /root/accounts

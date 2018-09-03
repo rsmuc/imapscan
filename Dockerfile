@@ -54,6 +54,8 @@ RUN cd /root && \
 
 # prepare directories and files
 RUN mkdir /root/accounts ; \
+	 mkdir /root/.spamassassin; \
+	 cp /root/spamassassin_user_prefs /root/.spamassassin/user_prefs ;\
     #mv *.txt /root/accounts ;\
     #mkdir /root/.imapfilter ; \
     cd /root && \ 
@@ -77,8 +79,6 @@ RUN mkdir /root/accounts ; \
 
 # volumes
 VOLUME /var/spamassassin
-VOLUME /root/.spamassassin
 VOLUME /root/accounts
-
 
 CMD /root/startup && tail -n 0 -F /var/log/*.log
