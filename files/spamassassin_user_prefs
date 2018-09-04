@@ -120,4 +120,4 @@ use_pyzor 0
 
 header RELAYCOUNTRY_BAD X-Relay-Countries =~ /\b(?!DE)[A-Z]{2}\b/
 describe RELAYCOUNTRY_BAD First untrusted relay is not Germany
-score RELAYCOUNTRY_BAD 2.0
+score RELAYCOUNTRY_BAD 1.0
