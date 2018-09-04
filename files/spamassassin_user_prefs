@@ -116,3 +116,7 @@ score BAYES_99 5
 #test not functional
 score RDNS_NONE 0
 use_pyzor 0
+
+header RELAYCOUNTRY_BAD X-Relay-Countries =~ /\b(?!DE)[A-Z]{2}\b/
+describe RELAYCOUNTRY_BAD First untrusted relay is not Germany
+score RELAYCOUNTRY_BAD 2.0
