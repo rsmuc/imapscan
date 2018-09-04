@@ -4,6 +4,8 @@ FROM debian:stable-slim
 ENV DEBIAN_FRONTEND=noninteractive
 ENV SHELL=/bin/bash
 
+WORKDIR /root
+
 # install dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -23,29 +25,32 @@ RUN apt-get update && \
       python-sphinx \
       unattended-upgrades && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-WORKDIR /root
-
-RUN pip install sphinx_rtd_theme html recommonmark typing
-
-RUN cd /root && \
+    rm -rf /var/lib/apt/lists/* && \
+    \
+    \
+    pip install sphinx_rtd_theme html recommonmark typing && \
+    \
+    \
+	 cd /root && \
     wget https://github.com/rsmuc/isbg/archive/master.zip && \
     unzip master.zip && \
     cd isbg-master && \
     python setup.py install && \
     cd .. && \
     rm -Rf isbg-master && \
-    rm master.zip
-    
-RUN cd /root && \ 
+    rm master.zip && \
+    \
+    \
+    cd /root && \ 
     wget https://github.com/rsmuc/imapscan/archive/master.zip && \
     unzip master.zip && \
     cd imapscan-master/files && \
     cp * /root && \
     cd && \
     rm -Rf /root/imapscan-master && \
-    rm /root/master.zip
+    rm /root/master.zip && \
+    apt-get remove wget python-pip python-setuptools unzip -y && \
+    apt-get autoremove -y
 
 #ADD files/* /root/
 
@@ -73,6 +78,19 @@ RUN mkdir /root/accounts ; \
     ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime ; \
     unlink /etc/timezone ; \
     ln -s /usr/share/zoneinfo/Europe/Berlin /etc/timezone
+
+# integrate geo database
+RUN apt-get update && apt-get install cpanminus make wget -y &&\
+		cpanm  YAML &&\
+		cpanm Geography::Countries &&\
+		cpanm Geo::IP IP::Country::Fast &&\
+		cd /tmp && \
+		wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz &&\
+		gunzip GeoIP.dat.gz &&\
+		mkdir /usr/local/share/GeoIP/ &&\
+		mv GeoIP.dat /usr/local/share/GeoIP/ &&\
+		echo "loadplugin Mail::SpamAssassin::Plugin::RelayCountry" >> /etc/spamassassin/init.pre
+
 
 # volumes
 VOLUME /var/spamassassin
