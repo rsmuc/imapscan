@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:stable-slim
 
 # shell to start from Kitematic
 ENV DEBIAN_FRONTEND=noninteractive
@@ -17,16 +17,12 @@ RUN apt-get update && \
       #razor \
       rsyslog \
       spamassassin \
-      spamc \
+      #spamc \
       unzip \
       wget \
       python-sphinx\
-    && \
-    apt-get clean #&& \
-    #rm -rf /var/lib/apt/lists/* && \
-    #pip install --upgrade pip && \
-    #pip install wheel && \
-    #pip install docopt==0.6.2
+      unattended-upgrades && \
+    apt-get clean
 
 WORKDIR /root
 
