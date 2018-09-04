@@ -13,7 +13,7 @@
 ## run dockercontainer:
 * sudo docker volume create spamassassin
 * sudo docker volume create accounts
-* sudo docker run -d --name isbg-test -v bayesdb:/root/bayesdb -v accounts:/root/accounts isbg-test
+* sudo docker run -d --name isbg-test -v bayesdb:/var/spamassassin/bayesdb -v accounts:/root/accounts isbg-test
 
 - if available copy the bayes_database to /root/bayesdb or use sa-learn --restore
 - configure the accounts at /root/accounts
