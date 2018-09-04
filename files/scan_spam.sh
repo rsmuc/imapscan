@@ -26,7 +26,7 @@ if [ -f "${file}" ]; then
     # to debug parsing of input file, uncomment next line
     #printf ">[%s]\n" "${account[@]}"
     IFS=${OLD_IFS}
-    echo "scanning spam in ${account[1]}/${account[3]} and move to ${account[1]}/${account[4]}"
+    echo "scanning spam in ${account[1]}/${account[4]} and move to ${account[1]}/${account[3]}"
     until /usr/local/bin/isbg \
         --imaphost ${account[0]} --imapuser "${account[1]}"  --imappasswd "${account[2]}" \
         --spaminbox "${account[3]}" \
