@@ -17,7 +17,7 @@ RUN apt-get update && \
       #razor \
       rsyslog \
       spamassassin \
-      #spamc \
+      spamc \
       unzip \
       wget \
       python-sphinx\
