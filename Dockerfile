@@ -6,7 +6,7 @@ ENV SHELL=/bin/bash
 
 # install dependencies
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
       cron \
       #imapfilter \
       nano \
@@ -20,9 +20,10 @@ RUN apt-get update && \
       spamc \
       unzip \
       wget \
-      python-sphinx\
+      python-sphinx \
       unattended-upgrades && \
-    apt-get clean
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
 
