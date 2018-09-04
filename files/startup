@@ -46,6 +46,7 @@ service rsyslog start
 {
   echo "fixing permissions, just in case..."
   chown -R debian-spamd:mail /var/spamassassin
+  chmod a+wr /var/spamassassin -R
 
   echo "updating SpamAssassin rules"
   sa-update --nogpg --channel sa.zmi.at && sa-update --nogpg --channel spamassassin.heinlein-support.de
