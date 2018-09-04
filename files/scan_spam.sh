@@ -27,7 +27,7 @@ if [ -f "${file}" ]; then
     #printf ">[%s]\n" "${account[@]}"
     IFS=${OLD_IFS}
     echo "scanning spam in ${account[1]}/${account[4]} and move to ${account[1]}/${account[3]}"
-    until /usr/local/bin/isbg \
+    until /usr/local/bin/isbg --spamc \
         --imaphost ${account[0]} --imapuser "${account[1]}"  --imappasswd "${account[2]}" \
         --spaminbox "${account[3]}" \
         --imapinbox "${account[4]}" \
