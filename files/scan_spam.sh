@@ -34,8 +34,7 @@ if [ -f "${file}" ]; then
         --learnhambox HAM \
         --learnspambox SPAMtrain \
         --delete \
-        --expunge \
-        --dryrun
+        --expunge
     do
         (>&2 echo "isbg failed, retrying...")
     done
