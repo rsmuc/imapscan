@@ -69,7 +69,7 @@ RUN mkdir /root/accounts ; \
     sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/spamassassin ; \
     sed -i 's/CRON=0/CRON=1/' /etc/default/spamassassin ; \
     sed -i 's/^OPTIONS=".*"/OPTIONS="--allow-tell --max-children 5 --helper-home-dir -u debian-spamd -x --virtual-config-dir=\/var\/spamassassin -s mail"/' /etc/default/spamassassin ; \
-    echo "bayes_path /root/bayesdb/bayes" >> /etc/spamassassin/local.cf ; \
+    echo "bayes_path /var/spamassassin/bayesdb/bayes" >> /etc/spamassassin/local.cf ; \
     echo "allow_user_rules 1" >> /etc/spamassassin/local.cf ; \
     mv 9*.cf /etc/spamassassin/ ; \
     echo "alias logger='/usr/bin/logger -e'" >> /etc/bash.bashrc ; \
@@ -93,7 +93,7 @@ RUN apt-get update && apt-get install cpanminus make wget -y &&\
 
 
 # volumes
-VOLUME /root/bayesdb
+VOLUME /var/spamassassin/bayesdb
 VOLUME /root/accounts
 
 CMD /root/startup && tail -n 0 -F /var/log/*.log
