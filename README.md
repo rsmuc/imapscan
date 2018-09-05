@@ -8,7 +8,10 @@
 ~~* mark with ***SPAM*** (added to user prefs)~~
 * make learnhambox configurable
 * check if spamassassin is stable (issues on debian native)
-
+* provide patch for --dryrun and --learnspambox issue
+* find better solution for report in HAM
+* make HAM report configurable
+* decrypt mails, check them for spam, add the report and encrypt them again with gpg
 
 ## run dockercontainer:
 * sudo docker volume create spamassassin
