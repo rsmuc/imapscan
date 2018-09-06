@@ -9,7 +9,7 @@ WORKDIR /root
 # install dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      #cron \
+      cron \
       #imapfilter \
       nano \
       python \

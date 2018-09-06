@@ -63,12 +63,15 @@ score TVD_SPACE_RATIO 1
 
 
 header  XYZWechseln     ALL =~ /wechseln/i
+tflags XYZWechseln autolearn_force
 score   XYZWechseln     2
 
 header XYZAmazon ALL =~ /amazon/i
+tflags XYZAmazon autolearn_force
 score XYZAmazon 1
 
 header XYZAmazonEurope ALL =~ /amazon europe/i
+tflags XYZAmazonEurope autolearn_force
 score XYZAmazonEurope 3
 
 header XYZSeller ALL =~ /seller/i
@@ -81,41 +84,54 @@ header XYZKosten ALL =~ /kosten/i
 score XYZKosten 1
 
 header XYZUnsubscribe List-Unsubscribe =~ /http/i
+tflags XYZUnsubscribe autolearn_force
 score XYZUnsubscribe 2
 
 header XYZLidl ALL =~ /lidl/i
 score XYZLidl 1
 
 header XYZDyson ALL =~ /dyson/i
+tflags XYZDyson autolearn_force
 score XYZDyson 1
 
 header XYZBeitrag ALL =~ /beitr/i
+tflags XYZBeitrag autolearn_force
 score XYZBeitrag 2
 
 header XYZEuro ALL =~ /euro/i
 score XYZEuro 2
 
 header XYZTarif ALL =~ /tarif/i
+tflags XYZTarif autolearn_force
 score XYZTarif 2
 
 header XYZKasse ALL =~ /kasse/i
+tflags XYZKasse autolearn_force
 score XYZKasse 2
 
 header XYZ_FROM_24      From =~ /24/i
 score XYZ_FROM_24       0.5
 
 score SPF_FAIL 0.5
+tflags SPF_FAIL autolearn_force
+
 score SPF_PASS -0.5
 
 score RCVD_IN_DNSWL_LOW -0.5
 
 score T_HTML_ATTACH 0.5
+tflags T_HTML_ATTACH autolearn_force
 
 score SURBL_BLOCKED 0.5
+tflags SURBL_BLOCKED autolearn_force
 
 score BAYES_999 10
+tflags BAYES_999 autolearn_force
 
 score BAYES_99 5
+tflags BAYES_99 autolearn_force
+
+score BAYES_00 -10
 
 #test not functional
 score RDNS_NONE 0
@@ -138,8 +154,9 @@ score RELAY_AND_DOMAIN 3
 
 # we are only able to anayze the header, so we need autolearn_force rules
 tflags RELAY_AND_DOMAIN autolearn_force
-tflags BAYES_999 autolearn_force
-tflags BAYES_99 autolearn_force
+tflags BAYES_50 autolearn_force
+tflags BAYES_60 autolearn_force
+tflags BAYES_80 autolearn_force
 #tflags DOMAIN_NOT_DE autolearn_force
 #tflags RELAYCOUNTRY_GOOD autolearn_force
 #tflags XYZUnsubscribe autolearn_force
