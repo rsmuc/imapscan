@@ -23,8 +23,6 @@ RUN apt-get update && \
       unzip \
       wget \
       python-sphinx \
-      cpanminus \
-      make \
       unattended-upgrades && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
@@ -51,20 +49,8 @@ RUN apt-get update && \
     cd && \
     rm -Rf /root/imapscan-master && \
     rm /root/master.zip && \
-    \
-    \
-    cpanm  YAML && \
-    cpanm Geography::Countries &&\
-	 cpanm Geo::IP IP::Country::Fast &&\
-	 cd /tmp && \
-	 wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz &&\
-	 gunzip GeoIP.dat.gz &&\
-	 mkdir /usr/local/share/GeoIP/ &&\
-	 mv GeoIP.dat /usr/local/share/GeoIP/ &&\
-	 \
-	 \
-	 apt-get remove wget python-pip python-setuptools unzip cpanminus make -y && \
-    apt-get autoremove -y &&\
+    apt-get remove wget python-pip python-setuptools unzip -y && \
+    apt-get autoremove -y
 
 #ADD files/* /root/
 
@@ -85,7 +71,6 @@ RUN mkdir /root/accounts ; \
     sed -i 's/^OPTIONS=".*"/OPTIONS="--allow-tell --max-children 5 --helper-home-dir -u debian-spamd -x --virtual-config-dir=\/var\/spamassassin -s mail"/' /etc/default/spamassassin ; \
     echo "bayes_path /var/spamassassin/bayesdb/bayes" >> /etc/spamassassin/local.cf ; \
     echo "allow_user_rules 1" >> /etc/spamassassin/local.cf ; \
-	 echo "loadplugin Mail::SpamAssassin::Plugin::RelayCountry" >> /etc/spamassassin/init.pre ;\
     mv 9*.cf /etc/spamassassin/ ; \
     echo "alias logger='/usr/bin/logger -e'" >> /etc/bash.bashrc ; \
     echo "LANG=en_US.UTF-8" > /etc/default/locale ; \
@@ -94,9 +79,21 @@ RUN mkdir /root/accounts ; \
     unlink /etc/timezone ; \
     ln -s /usr/share/zoneinfo/Europe/Berlin /etc/timezone
 
+# integrate geo database
+RUN apt-get update && apt-get install cpanminus make wget -y &&\
+		cpanm  YAML &&\
+		cpanm Geography::Countries &&\
+		cpanm Geo::IP IP::Country::Fast &&\
+		cd /tmp && \
+		wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz &&\
+		gunzip GeoIP.dat.gz &&\
+		mkdir /usr/local/share/GeoIP/ &&\
+		mv GeoIP.dat /usr/local/share/GeoIP/ &&\
+		echo "loadplugin Mail::SpamAssassin::Plugin::RelayCountry" >> /etc/spamassassin/init.pre
+
 
 # volumes
-VOLUME /var/spamassassin/bayesdb
+VOLUME /var/spamassassin
 VOLUME /root/accounts
 
 CMD /root/startup && tail -n 0 -F /var/log/*.log
