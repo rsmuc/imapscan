@@ -77,6 +77,9 @@ score XYZSeller 1
 header XYZSelling ALL =~ /selling/i
 score XYZSelling 1
 
+header XYZKosten ALL =~ /kosten/i
+score XYZKosten 1
+
 header XYZUnsubscribe List-Unsubscribe =~ /http/i
 score XYZUnsubscribe 2
 
