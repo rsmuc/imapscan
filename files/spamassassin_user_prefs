@@ -134,3 +134,13 @@ header __RELAYCOUNTRY_NOT_DE X-Relay-Countries !~ /DE/i
 meta RELAY_AND_DOMAIN (__DOMAIN_DE && __RELAYCOUNTRY_NOT_DE)
 describe RELAY_AND_DOMAIN Domain is DE but first relay is not DE.
 score RELAY_AND_DOMAIN 3
+
+
+# we are only able to anayze the header, so we need autolearn_force rules
+tflags RELAY_AND_DOMAIN autolearn_force
+tflags BAYES_999 autolearn_force
+tflags BAYES_99 autolearn_force
+#tflags DOMAIN_NOT_DE autolearn_force
+#tflags RELAYCOUNTRY_GOOD autolearn_force
+#tflags XYZUnsubscribe autolearn_force
+bayes_auto_learn_threshold_spam 8.0
