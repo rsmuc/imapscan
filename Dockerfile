@@ -93,7 +93,7 @@ RUN apt-get update && apt-get install cpanminus make wget -y &&\
 
 
 # volumes
-VOLUME /var/spamassassin
+VOLUME /var/spamassassin/bayesdb
 VOLUME /root/accounts
 
 CMD /root/startup && tail -n 0 -F /var/log/*.log

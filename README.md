@@ -6,8 +6,8 @@
 ~~* integrate bayes filter (sa-learn --backup > backup.txt ; sa-learn --restore backup.txt)~~
 ~~* show always header (added to user_prefs)~~
 ~~* mark with ***SPAM*** (added to user prefs)~~
-* make learnhambox configurable
-* check if spamassassin is stable (issues on debian native)
+~~* make learnhambox configurable~~
+~~* check if spamassassin is stable (issues on debian native)~~
 * provide patch for --dryrun and --learnspambox issue
 * find better solution for report in HAM
 * make HAM report configurable

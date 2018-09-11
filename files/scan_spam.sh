@@ -31,10 +31,10 @@ if [ -f "${file}" ]; then
         --imaphost ${account[0]} --imapuser "${account[1]}"  --imappasswd "${account[2]}" \
         --spaminbox "${account[3]}" \
         --imapinbox "${account[4]}" \
-        --learnhambox HAM \
-        --learnspambox SPAMtrain \
+        --learnhambox "${account[5]}" \
+        --learnspambox "${account[6]}" \
         --delete \
-        --expunge
+        --expunge 2>&1 | logger
     do
         (>&2 echo "isbg failed, retrying...")
     done

@@ -1,1 +1,1 @@
-#server	user	password	junk folder	input folder
+#server	user	password	junk folder	input folder  ham folder  spamtrain folder

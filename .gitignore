@@ -2,3 +2,4 @@ run_*
 make_env
 target 
 *.log 
+*~
