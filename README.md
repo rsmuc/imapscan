@@ -19,12 +19,28 @@
 * find better solution for report in HAM
 * make HAM report configurable
 
+
+## features:
+
+* integrated geo database and filters for it
+
+* focused on encrypted emails (header analysis only)
+
+* custom spamassassin rules for Germany and header analysis (my mails are prefiltered by mailbox.org - this container is only focused to the SPAM the MBO filter does not catch)
+
+* account information and bayes database persistent
+
+* latest isbg + patched version
+
+* spamassassin report will be written to SPAMs and also to HAM mails in the header
+
 ## run dockercontainer:
 * sudo docker volume create bayesdb
 * sudo docker volume create accounts
 * sudo docker run -d --name isbg-test -v bayesdb:/var/spamassassin/bayesdb -v accounts:/root/accounts isbg-test
 
 - if available copy the bayes_database to /root/bayesdb or use sa-learn --restore
+- check if user rights for /var/spamassassin/bayeddb are correct (spamd must have read and write access)
 - configure the accounts at /root/accounts
 - remove the comments from crontab (crontab -e) to start automatic check
 
