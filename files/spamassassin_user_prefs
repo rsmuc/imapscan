@@ -146,6 +146,11 @@ describe TLD_NOT_TRUSTED Domain of sender is not .de, .com, .net or .org
 tflags TLD_NOT_TRUSTED autolearn_force
 score TLD_NOT_TRUSTED 1.5
 
+header TLD_BLACKLIST  From =~ /(\.space>|\.tld>|\.site>|\.review>|\.live>|\.me>|\.online>)\Z/
+describe TLD_BLACKLIST Domain of sender is .space, .tld, .site, .review, .live, .me, .online
+tflags TLD_BLACKLIST autolearn_force
+score TLD_BLACKLIST 3
+
 header MAILBOX_CONTENT_X X-Spam =~ /Yes/i
 describe MAILBOX_CONTENT_X Mailbox.org content filter positive match
 tflags MAILBOX_CONTENT_X autolearn_force
