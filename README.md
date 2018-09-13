@@ -3,17 +3,24 @@
 ## todos:
 
 ~~* integrate heinlein scripts (added to cron and startup)~~
+
 ~~* integrate bayes filter (sa-learn --backup > backup.txt ; sa-learn --restore backup.txt)~~
+
 ~~* show always header (added to user_prefs)~~
+
 ~~* mark with ***SPAM*** (added to user prefs)~~
+
 ~~* make learnhambox configurable~~
+
 ~~* check if spamassassin is stable (issues on debian native)~~
-* provide patch for --dryrun and --learnspambox issue
+
+~~* provide patch for --dryrun and --learnspambox issue~~
+
 * find better solution for report in HAM
 * make HAM report configurable
 
 ## run dockercontainer:
-* sudo docker volume create spamassassin
+* sudo docker volume create bayesdb
 * sudo docker volume create accounts
 * sudo docker run -d --name isbg-test -v bayesdb:/var/spamassassin/bayesdb -v accounts:/root/accounts isbg-test
 
