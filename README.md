@@ -22,6 +22,8 @@
 
 ## features:
 
+* Integrated PUSH / IMAP IDLE support
+
 * integrated geo database and filters for it
 
 * focused on encrypted emails (header analysis only)

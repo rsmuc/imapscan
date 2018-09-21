@@ -12,6 +12,9 @@ if [ ! -f startup_done ]; then
   if [ -f /var/spamassassin/scan_lock ]; then
     rm /var/spamassassin/scan_lock
   fi
+  if [ -f /root/.cache/isbg/lock ]; then
+    rm /root/.cache/isbg/lock
+  fi
   # move default config files to volumes if missing
   if [ ! -f /var/spamassassin/user_prefs ]; then
     mv spamassassin_user_prefs /var/spamassassin/user_prefs
