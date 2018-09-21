@@ -15,13 +15,20 @@ HOST = account[1][0]
 USERNAME = account[1][1]
 PASSWORD = account[1][2]
 
-server = IMAPClient(HOST)
-server.login(USERNAME, PASSWORD)
-server.select_folder('INBOX')
+while True:
+	try:
 
-# Start IDLE mode
-server.idle()
-logging.info("Connection is now in IDLE mode")
+		server = IMAPClient(HOST)
+		server.login(USERNAME, PASSWORD)
+		server.select_folder('INBOX')
+
+		# Start IDLE mode
+		server.idle()
+		logging.info("Connection is now in IDLE mode")
+	except:
+		logging.info("Failed to connect - try again")
+		continue
+	break
 
 while True:
     try:
