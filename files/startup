@@ -22,11 +22,6 @@ if [ ! -f startup_done ]; then
     mkdir /root/.spamassassin
     cp /var/spamassassin/user_prefs /root/.spamassassin/user_prefs
   fi
-  if [ ! -f .imapfilter/config.lua ]; then
-    mv imapfilter_config.lua .imapfilter/config.lua
-  else
-    rm imapfilter_config.lua
-  fi
   if [ ! -f accounts/imap_accounts.txt ]; then
     mv imap_accounts.txt accounts/imap_accounts.txt
   else
@@ -58,8 +53,8 @@ service rsyslog start
   logger "starting spamassassin"
   service spamassassin start
 
-  echo "running learm_spam"
-  ./learn_spam.sh
+  echo "running pushtest"
+  python ./pushtest.py &
 
   echo "starting CRON"
   service cron start
