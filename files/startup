@@ -54,7 +54,7 @@ service rsyslog start
   service spamassassin start
 
   echo "running pushtest"
-  python ./pushtest.py
+  python ./pushtest.py &
 
   echo "starting CRON"
   service cron start
