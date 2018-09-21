@@ -28,7 +28,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     \
     \
-    pip install sphinx_rtd_theme html recommonmark typing && \
+    pip install sphinx_rtd_theme html recommonmark typing imapclient && \
     \
     \
 	 cd /root && \
