@@ -58,6 +58,9 @@ service rsyslog start
 
   echo "running pushtest"
   python ./pushtest.py &
+  
+  echo "one time spam scan"
+  /root/scan_spam.sh
 
   echo "starting CRON"
   service cron start

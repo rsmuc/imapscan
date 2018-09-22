@@ -59,7 +59,7 @@ def pushing(server):
              
             if count > 5:
                 logging.info("No responses from Server - Scan for Spam, then Restart")
-                scan_spam())
+                scan_spam()
                 count = 0
                 raise Exception("No response")
             
