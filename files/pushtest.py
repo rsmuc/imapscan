@@ -61,7 +61,7 @@ def pushing(server):
                 logging.info("No responses from Server - Scan for Spam, then Restart")
                 scan_spam())
                 count = 0
-                raise NoResponseError
+                raise Exception("No response")
             
             for response in responses:
                 count = 0
