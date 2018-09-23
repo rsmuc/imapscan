@@ -75,7 +75,7 @@ def pushing(server):
             logging.info("Push error")
             count = 0
             logging.info(e.message, e.args)
-            print e.message, e.args
+            #print e.message, e.args
             logging.info("Logoff")
             logoff(server)
             logging.info("Login")    
