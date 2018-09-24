@@ -74,8 +74,7 @@ def pushing(server):
         except Exception as e:
             logging.info("Push error")
             count = 0
-            logging.info(e.message, e.args)
-            #print e.message, e.args
+            logging.info(str(e.message))
             logging.info("Logoff")
             logoff(server)
             logging.info("Login")    

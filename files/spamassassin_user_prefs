@@ -66,9 +66,21 @@ header  XYZWechseln     ALL =~ /wechseln/i
 tflags XYZWechseln autolearn_force
 score   XYZWechseln     2
 
-header XYZAmazon ALL =~ /amazon/i
+header  XYZGewinn     ALL =~ /gewinn/i
+tflags XYZGewinn autolearn_force
+score   XYZGewinn     2
+
+header XYZAmazon Subject =~ /amazon/i
 tflags XYZAmazon autolearn_force
 score XYZAmazon 1
+
+header XYZAmazonFrom From =~ /amazon/i
+tflags XYZAmazonFrom autolearn_force
+score XYZAmazonFrom 1
+
+header XYZAmazonDEFrom From =~ /amazon.de/i
+tflags XYZAmazonDEFrom autolearn_force
+score XYZAmazonDEFrom -2
 
 header XYZAmazonEurope ALL =~ /amazon europe/i
 tflags XYZAmazonEurope autolearn_force
@@ -100,6 +112,9 @@ score XYZBeitrag 2
 
 header XYZEuro ALL =~ /euro/i
 score XYZEuro 2
+
+header XYZEuroSign ALL =~ /\€/i
+score XYZEuroSign 2
 
 header XYZTarif ALL =~ /tarif/i
 tflags XYZTarif autolearn_force
@@ -169,7 +184,7 @@ tflags RELAY_AND_DOMAIN autolearn_force
 score RELAY_AND_DOMAIN 3
 
 
-# we are only able to anayze the header, so we need autolearn_force rules
+# we are only able to analyze the header, so we need autolearn_force rules
 tflags BAYES_50 autolearn_force
 tflags BAYES_60 autolearn_force
 tflags BAYES_80 autolearn_force
