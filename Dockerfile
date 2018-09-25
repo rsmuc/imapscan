@@ -23,6 +23,7 @@ RUN apt-get update && \
       unzip \
       wget \
       python-sphinx \
+      lighttpd \
       unattended-upgrades && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
@@ -95,5 +96,7 @@ RUN apt-get update && apt-get install cpanminus make wget -y &&\
 # volumes
 VOLUME /var/spamassassin/bayesdb
 VOLUME /root/accounts
+
+EXPOSE 80/tcp
 
 CMD /root/startup && tail -n 0 -F /var/log/*.log

@@ -22,6 +22,8 @@
 
 ## features:
 
+* Integrated a report for all HAM mails. Reachable via lighttpd e.g.: http://192.168.1.23:8000/hamreport.txt
+
 * Integrated PUSH / IMAP IDLE support
 
 * integrated geo database and filters for it
@@ -39,7 +41,7 @@
 ## run dockercontainer:
 * sudo docker volume create bayesdb
 * sudo docker volume create accounts
-* sudo docker run -d --name isbg-test -v bayesdb:/var/spamassassin/bayesdb -v accounts:/root/accounts isbg-test
+* sudo docker run -d --name isbg-test -v bayesdb:/var/spamassassin/bayesdb -v accounts:/root/accounts -p 8000:80 isbg-test
 
 - if available copy the bayes_database to /root/bayesdb or use sa-learn --restore
 - check if user rights for /var/spamassassin/bayeddb are correct (spamd must have read and write access)
