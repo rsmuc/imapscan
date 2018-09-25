@@ -16,8 +16,11 @@
 
 ~~* provide patch for --dryrun and --learnspambox issue~~
 
-* find better solution for report in HAM
-* make HAM report configurable
+~~* find better solution for report in HAM~~
+
+~~* make HAM report configurable~~
+
+* integrate logrotation
 
 
 ## features:
