@@ -25,13 +25,11 @@ def login():
     #login to server
     while True:
         try:
-    
             server = IMAPClient(HOST)
             server.login(USERNAME, PASSWORD)
             server.select_folder('INBOX')
-    
             # Start IDLE mode
-    		server.idle()
+            server.idle()
             logging.info("Connection is now in IDLE mode")
         except Exception as e:
             logging.info("Failed to connect - try again")

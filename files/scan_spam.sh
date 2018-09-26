@@ -33,7 +33,7 @@ if [ -f "${file}" ]; then
         --imapinbox "${account[4]}" \
         --learnhambox "${account[5]}" \
         --learnspambox "${account[6]}" \
-        --hamreport "/var/www/hamreport.txt" \
+        --hamreport "/var/www/html/hamreport.txt" \
         --delete \
         --expunge 2>&1 | logger
     do
