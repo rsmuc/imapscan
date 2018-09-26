@@ -55,6 +55,9 @@ service rsyslog start
 
   logger "starting spamassassin"
   service spamassassin start
+  
+  logger "start lighttpd"
+  service lighttpd start
 
   echo "running pushtest"
   python ./pushtest.py &

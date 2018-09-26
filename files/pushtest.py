@@ -5,6 +5,7 @@ from imapclient import IMAPClient
 import subprocess
 import csv
 import logging
+import datetime
 
 # read account information
 account = list(csv.reader(open('/root/accounts/imap_accounts.txt', 'rb'), delimiter='\t'))
@@ -51,9 +52,11 @@ def pushing(server):
             responses = server.idle_check(timeout=29)
             
             if responses:
+                logging.info(datetime.datetime.now())
                 logging.info(responses)               
                 
             else: 
+                logging.info(datetime.datetime.now())         
                 logging.info("Response: nothing")
                 count = count + 1
              
@@ -72,6 +75,7 @@ def pushing(server):
         except KeyboardInterrupt:
             break
         except Exception as e:
+            logging.info(datetime.datetime.now())
             logging.info("Push error")
             count = 0
             logging.info(str(e.message))
