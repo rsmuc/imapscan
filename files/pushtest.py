@@ -24,20 +24,21 @@ def scan_spam():
 def login():
     #login to server
     while True:
-    	try:
+        try:
     
-    		server = IMAPClient(HOST)
-    		server.login(USERNAME, PASSWORD)
-    		server.select_folder('INBOX')
+            server = IMAPClient(HOST)
+            server.login(USERNAME, PASSWORD)
+            server.select_folder('INBOX')
     
-    		# Start IDLE mode
+            # Start IDLE mode
     		server.idle()
-    		logging.info("Connection is now in IDLE mode")
-    	except Exception as e:
-    		logging.info("Failed to connect - try again")
-    		logging.info(e.message)
-    		continue
-    	return server
+            logging.info("Connection is now in IDLE mode")
+        except Exception as e:
+            logging.info("Failed to connect - try again")
+            logging.info(e.message)
+            continue
+        return server
+
 
 def logoff(server):
     server.idle_done()
