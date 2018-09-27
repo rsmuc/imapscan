@@ -37,7 +37,8 @@ if [ -f "${file}" ]; then
         --delete \
         --expunge 2>&1 | logger
     do
-        (>&2 echo "isbg failed, retrying...")
+        (>&2 echo "isbg failed, break...")
+        break
     done
     echo "scanning of spam done"
   done < "$file"
