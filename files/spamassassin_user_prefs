@@ -14,7 +14,7 @@ clear_headers
 fold_headers 1
 add_header all Level _STARS(*)_
 #add_header all _TESTSSCORES(,)_ [2]
-add_header all Status _YESNO_, score=_SCORE_ required=_REQD_ tests=_TESTS_ autolearn=_AUTOLEARN_ version=_VERSION_
+add_header all Status _YESNO_, score=_SCORE_ required=_REQD_ tests=_TESTS_ autolearn=_AUTOLEARN_ version=_VERSION_ releay=_RELAYCOUNTRY_
 add_header all Checker-Version SpamAssassin _VERSION_ (_SUBVERSION_) on _HOSTNAME_
 add_header all Report _REPORT_
 add_header all Relay-Country _RELAYCOUNTRY_
@@ -110,7 +110,7 @@ header XYZBeitrag ALL =~ /beitr/i
 tflags XYZBeitrag autolearn_force
 score XYZBeitrag 2
 
-header XYZEuro ALL =~ /euro/i
+header XYZEuro Subject =~ /euro/i
 score XYZEuro 2
 
 header XYZEuroSign ALL =~ /\€/i

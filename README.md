@@ -25,7 +25,7 @@
 
 ## features:
 
-* Integrated a report for all HAM mails. Reachable via lighttpd e.g.: http://192.168.1.23:8000/hamreport.txt
+* Integrated a report for all HAM mails. Reachable via lighttpd e.g.: http://192.168.1.23:8000/mailreport.txt
 
 * Integrated PUSH / IMAP IDLE support
 

@@ -24,6 +24,7 @@ RUN apt-get update && \
       wget \
       python-sphinx \
       lighttpd \
+      logrotate \
       unattended-upgrades && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
@@ -59,8 +60,6 @@ RUN apt-get update && \
 RUN mkdir /root/accounts ; \
 	 mkdir /root/.spamassassin; \
 	 cp /root/spamassassin_user_prefs /root/.spamassassin/user_prefs ;\
-    #mv *.txt /root/accounts ;\
-    #mkdir /root/.imapfilter ; \
     cd /root && \ 
     mkdir -p /var/spamassassin/bayesdb ; \
     chown -R debian-spamd:mail /var/spamassassin ; \
@@ -73,6 +72,7 @@ RUN mkdir /root/accounts ; \
     echo "bayes_path /var/spamassassin/bayesdb/bayes" >> /etc/spamassassin/local.cf ; \
     echo "allow_user_rules 1" >> /etc/spamassassin/local.cf ; \
     mv 9*.cf /etc/spamassassin/ ; \
+    mv isbg_logrotate /etc/logrotate.d/isbg_logrotate ; \
     echo "alias logger='/usr/bin/logger -e'" >> /etc/bash.bashrc ; \
     echo "LANG=en_US.UTF-8" > /etc/default/locale ; \
     unlink /etc/localtime ; \
