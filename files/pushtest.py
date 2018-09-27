@@ -44,18 +44,18 @@ def logoff(server):
     server.logout()
 
 def pushing(server):
-    count = 0    
+    """run IMAP idle until an exception (like no response) happens"""
+    count = 0
     while True:
         try:
             # Wait for up to 30 seconds for an IDLE response
             responses = server.idle_check(timeout=29)
-            
+            logging.info(datetime.datetime.now())
+
             if responses:
-                logging.info(datetime.datetime.now())
                 logging.info(responses)               
                 
-            else: 
-                logging.info(datetime.datetime.now())         
+            else:
                 logging.info("Response: nothing")
                 count = count + 1
              
@@ -78,19 +78,21 @@ def pushing(server):
             logging.info("Push error")
             count = 0
             logging.info(str(e.message))
-            logging.info("Logoff")
-            logoff(server)
-            logging.info("Login")    
-            server = login()
-            logging.info("Start push again")
-            pushing(server)
-            #break
+            break
 
+# run IMAP IDLE until CTRL-C is pressed.
+while True:
+    try:
+        logging.info("Login to IMAP")
+        server = login()
+        logging.info("Start IAMP IDLE")
+        pushing(server)
+        logging.info("Logoff from IMAP")
+        logoff(server)
 
-# login to the server
-server = login()
-# start push
-pushing(server)
+    except KeyboardInterrupt:
+        break
+
 # logoff
 logoff(server)
 
