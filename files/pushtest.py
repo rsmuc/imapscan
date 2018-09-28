@@ -9,7 +9,7 @@ import datetime
 
 # read account information
 account = list(csv.reader(open('/root/accounts/imap_accounts.txt', 'rb'), delimiter='\t'))
-logging.basicConfig(filename='/var/log/pushtest.log',level=logging.INFO)
+logging.basicConfig(filename='/var/log/pushtest.log',level=logging.INFO, format='%(asctime)s %(message)s')
 
 
 HOST = account[1][0] 
@@ -49,8 +49,7 @@ def pushing(server):
     while True:
         try:
             # Wait for up to 30 seconds for an IDLE response
-            responses = server.idle_check(timeout=29)
-            logging.info(datetime.datetime.now())
+            responses = server.idle_check(timeout=29)           
 
             if responses:
                 logging.info(responses)               
@@ -74,7 +73,6 @@ def pushing(server):
         except KeyboardInterrupt:
             break
         except Exception as e:
-            logging.info(datetime.datetime.now())
             logging.info("Push error")
             count = 0
             logging.info(str(e.message))
@@ -92,8 +90,11 @@ while True:
 
     except KeyboardInterrupt:
         break
+    except Exception as e:
+        logging.info("Exception in Mainloop:")
+        logging.info(str(e.message))
 
 # logoff
 logoff(server)
-
+logging.info("Pushtest exited")
 
