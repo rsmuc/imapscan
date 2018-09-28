@@ -61,6 +61,9 @@ score LOTS_OF_MONEY 1
 
 score TVD_SPACE_RATIO 1
 
+header XYZ_SUBJECT_BLACKLIST1 Subject =~ /(wechseln|gewinn|amazon|amazon europe|seller|selling|kosten|lidl|dyson|beitr|euro|\€|tarif|kasse)/i
+tflags XYZ_SUBJECT_BLACKLIST1 autolearn_force
+score   XYZ_SUBJECT_BLACKLIST1     1
 
 header  XYZWechseln     ALL =~ /wechseln/i
 tflags XYZWechseln autolearn_force
@@ -120,9 +123,13 @@ header XYZTarif ALL =~ /tarif/i
 tflags XYZTarif autolearn_force
 score XYZTarif 2
 
-header XYZKasse ALL =~ /kasse/i
-tflags XYZKasse autolearn_force
-score XYZKasse 2
+header XYZKasseFrom From =~ /kasse/i
+tflags XYZKasseFrom autolearn_force
+score XYZKasseFrom 2
+
+header XYZKasseSubject Subject =~ /kasse/i
+tflags XYZKasseSubject autolearn_force
+score XYZKasseSubject 2
 
 header XYZ_FROM_24      From =~ /24/i
 score XYZ_FROM_24       0.5
