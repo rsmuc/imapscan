@@ -85,8 +85,8 @@ describe TLD_NOT_TRUSTED Domain of sender is not .de, .com, .net or .org
 tflags TLD_NOT_TRUSTED autolearn_force
 score TLD_NOT_TRUSTED 1.5
 
-header TLD_BLACKLIST  From =~ /(\.space>|\.tld>|\.site>|\.review>|\.live>|\.me>|\.online>|\.email>|\.host>|\.ltd>)\Z/
-describe TLD_BLACKLIST Domain of sender is .space, .tld, .site, .review, .live, .me, .online
+header TLD_BLACKLIST  From =~ /(\.space>|\.tld>|\.site>|\.review>|\.live>|\.me>|\.online>|\.email>|\.host>|\.ltd>|\.life>)\Z/
+describe TLD_BLACKLIST Top-Level Domain of sender is .space, .tld, .site, .review, .live, .me, .online, .life, .host
 tflags TLD_BLACKLIST autolearn_force
 score TLD_BLACKLIST 3
 
@@ -111,8 +111,9 @@ score RELAY_AND_DOMAIN 3
 # customize some scores#
 
 score LOTS_OF_MONEY 1
+score NO_DNS_FOR_FROM 1
 
-score TVD_SPACE_RATIO 1
+score TVD_SPACE_RATIO 0.5
 
 score SPF_FAIL 0.5
 tflags SPF_FAIL autolearn_force
