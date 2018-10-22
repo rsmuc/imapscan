@@ -72,7 +72,6 @@ RUN mkdir /root/accounts ; \
     echo "bayes_path /var/spamassassin/bayesdb/bayes" >> /etc/spamassassin/local.cf ; \
     echo "allow_user_rules 1" >> /etc/spamassassin/local.cf ; \
     mv 9*.cf /etc/spamassassin/ ; \
-    mv isbg_logrotate /etc/logrotate.d/isbg_logrotate ; \
     echo "alias logger='/usr/bin/logger -e'" >> /etc/bash.bashrc ; \
     echo "LANG=en_US.UTF-8" > /etc/default/locale ; \
     unlink /etc/localtime ; \
