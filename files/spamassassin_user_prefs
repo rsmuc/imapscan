@@ -54,13 +54,13 @@ score  URIBL_DBL_SPAM 4
 
 # score SUBJ_ILLEGAL_CHARS      0
 
-header XYZ_SUBJECT_BLACKLIST1 Subject =~ /(wechseln|gewinn|amazon|amazon europe|seller|selling|kosten|lidl|dyson|beitr|euro|\€|tarif|kasse|24)/i
+header XYZ_SUBJECT_BLACKLIST1 Subject =~ /(wechseln|gewinn|amazon|amazon europe|seller|selling|kosten|lidl|dyson|beitr|euro|\€|tarif|kasse|gardena|24)/i
 tflags XYZ_SUBJECT_BLACKLIST1 autolearn_force
 describe XYZ_SUBJECT_BLACKLIST1 Blacklisted word in Subject 1
 score   XYZ_SUBJECT_BLACKLIST1     2
 
 
-header XYZ_FROM_BLACKLIST1 From =~ /(wechseln|gewinn|amazon|amazon europe|seller|selling|kosten|lidl|dyson|beitr|euro|\€|tarif|kasse|24)/i
+header XYZ_FROM_BLACKLIST1 From =~ /(wechseln|gewinn|amazon|amazon europe|seller|selling|kosten|lidl|dyson|beitr|euro|\€|tarif|kasse|gardena|24)/i
 tflags XYZ_FROM_BLACKLIST1 autolearn_force
 describe XYZ_FROM_BLACKLIST1 Blacklisted word in From 1
 score   XYZ_FROM_BLACKLIST1     2
